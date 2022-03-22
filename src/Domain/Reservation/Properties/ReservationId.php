@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Domain\Reservation\Properties;
 
+use Src\Domain\Properties\AbstractProperty;
 use Src\Domain\Reservation\Exceptions\ReservationWrongPropertiesException;
 
 /**

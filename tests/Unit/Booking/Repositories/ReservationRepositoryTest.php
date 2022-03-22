@@ -21,7 +21,7 @@ class ReservationRepositoryTesting extends TestCase
         $this->iReservationRepository = app(EloquentReservationRepository::class);
     }
 
-    public function getReservation_withId_ReturnsReservation(): void
+    public function test_getReservation_withId_ReturnsReservation(): void
     {
         $id = uniqid();
 
@@ -30,7 +30,7 @@ class ReservationRepositoryTesting extends TestCase
         $this->assertInstanceOf(Reservation::class, $reservation);
     }
 
-    public function createReservation_withValidData_ReturnsReservation(): void
+    public function test_createReservation_withValidData_ReturnsReservation(): void
     {
         $id = uniqid();
         $reservationId = new ReservationId($id);
@@ -38,5 +38,14 @@ class ReservationRepositoryTesting extends TestCase
         $reservation = $this->iReservationRepository->createReservation(new Reservation($reservationId));
 
         $this->assertInstanceOf(Reservation::class, $reservation);
+    }
+
+    public function test_getReservation_withId_ReturnsReservationWithBelongedId(): void
+    {
+        $id = uniqid();
+
+        $reservation = $this->iReservationRepository->getReservationById(new ReservationId($id));
+
+        $this->assertSame($id, $reservation->reservationId->getValue());
     }
 }

@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\Domain\Reservation\Properties;
-
+namespace Src\Domain\Properties;
 
 abstract class AbstractProperty implements IProperty
 {
