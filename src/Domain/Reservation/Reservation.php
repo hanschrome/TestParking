@@ -9,4 +9,9 @@ use Src\Domain\Reservation\Properties\ReservationId;
 class Reservation
 {
     public ReservationId $reservationId;
+
+    public function __construct(ReservationId $reservationId)
+    {
+        $this->reservationId = $reservationId;
+    }
 }

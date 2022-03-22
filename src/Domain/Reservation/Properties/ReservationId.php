@@ -6,8 +6,15 @@ namespace Src\Domain\Reservation\Properties;
 
 use Src\Domain\Reservation\Exceptions\ReservationWrongPropertiesException;
 
+/**
+ * @method getValue() string
+ */
 class ReservationId extends AbstractProperty
 {
+    public function __construct(string $id)
+    {
+        $this->value = $id;
+    }
 
     /**
      * @throws ReservationWrongPropertiesException
