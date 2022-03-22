@@ -33,10 +33,6 @@ class EloquentReservationRepository implements IReservationRepository
         /**
          * @todo map eloquent to reservation
          */
-        $reservationSaved = new Reservation(
-            new ReservationId($reservationEloquentModel->uuid)
-        );
-
-        return $reservationSaved;
+        return $this->$this->getReservationById($reservation->reservationId->getValue());
     }
 }

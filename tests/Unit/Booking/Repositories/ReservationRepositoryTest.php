@@ -40,11 +40,11 @@ class ReservationRepositoryTesting extends TestCase
         $this->assertInstanceOf(Reservation::class, $reservation);
     }
 
-    public function test_getReservation_withId_ReturnsReservationWithBelongedId(): void
+    public function test_createReservation_withId_ReturnsReservationWithBelongedId(): void
     {
         $id = uniqid();
 
-        $reservation = $this->iReservationRepository->getReservationById(new ReservationId($id));
+        $reservation = $this->iReservationRepository->createReservationById(new ReservationId($id));
 
         $this->assertSame($id, $reservation->reservationId->getValue());
     }
