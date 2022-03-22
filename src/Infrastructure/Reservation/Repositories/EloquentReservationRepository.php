@@ -23,6 +23,20 @@ class EloquentReservationRepository implements IReservationRepository
 
     function createReservation(Reservation $reservation): Reservation
     {
-        return new Reservation(new ReservationId(uniqid()));
+        $reservationEloquentModel = new ReservationEloquentModel();
+
+        /**
+         * @todo map reservation to eloquent
+         */
+        $reservationEloquentModel->uuid = $reservation->reservationId->getValue();
+        $reservationEloquentModel->save();
+        /**
+         * @todo map eloquent to reservation
+         */
+        $reservationSaved = new Reservation(
+            new ReservationId($reservationEloquentModel->uuid)
+        );
+
+        return $reservationSaved;
     }
 }
