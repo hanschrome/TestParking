@@ -11,15 +11,14 @@ use Src\Domain\Reservation\Reservation;
 
 class EloquentReservationRepository implements IReservationRepository
 {
-    private ReservationEloquentModel $reservationEloquentModel;
-
-    public function __construct()
-    {
-    }
-
     function getReservationById(ReservationId $reservationId): Reservation
     {
-        return new Reservation(new ReservationId(uniqid()));
+        /** @var ReservationEloquentModel $eloquentModel */
+        $eloquentModel = ReservationEloquentModel::query()->find(['uuid' => $reservationId->getValue()])->first();
+
+        return new Reservation(
+            new ReservationId($eloquentModel->uuid)
+        );
     }
 
     function createReservation(Reservation $reservation): Reservation
