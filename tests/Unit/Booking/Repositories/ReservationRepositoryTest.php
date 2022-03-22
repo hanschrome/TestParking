@@ -32,6 +32,11 @@ class ReservationRepositoryTesting extends TestCase
 
     public function createReservation_withValidData_ReturnsReservation(): void
     {
+        $id = uniqid();
+        $reservationId = new ReservationId($id);
 
+        $reservation = $this->iReservationRepository->createReservation(new Reservation($reservationId));
+
+        $this->assertInstanceOf(Reservation::class, $reservation);
     }
 }
