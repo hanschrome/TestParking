@@ -13,11 +13,11 @@ class EloquentReservationRepository implements IReservationRepository
 
     function getReservationById(ReservationId $reservationId): Reservation
     {
-        return new Reservation();
+        return new Reservation(new ReservationId(uniqid()));
     }
 
     function createReservation(Reservation $reservation): Reservation
     {
-        return new Reservation();
+        return new Reservation(new ReservationId(uniqid()));
     }
 }
